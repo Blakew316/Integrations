@@ -218,11 +218,10 @@
   .score{
     flex:none; min-width:42px; height:42px; border-radius:12px; display:flex; flex-direction:column;
     align-items:center; justify-content:center;
-    background:var(--group); color:var(--slate); line-height:1;
+    background:var(--group); color:var(--ink); line-height:1;
   }
   .score b{font-size:16px; font-weight:700; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
-  .score i{font-style:normal; font-size:8.5px; opacity:.75; margin-top:2px; font-weight:500}
-  .score.hi{background:var(--virt-bg); color:var(--virt-tx)}
+  .score i{font-style:normal; font-size:8.5px; opacity:.6; margin-top:2px; font-weight:500; color:var(--slate)}
   .score.lo{opacity:.7}
   .item .blurb{
     margin:0; font-size:13.5px; line-height:1.5; color:var(--slate); min-height:2.95em;
@@ -234,17 +233,13 @@
   }
   .fee{font-size:12.5px; font-weight:600; letter-spacing:-.005em; color:var(--ink); font-variant-numeric:tabular-nums}
   .foot-right{display:flex; align-items:center; gap:7px}
-  .has-contact{display:inline-flex; color:var(--green-tx)}
+  .has-contact{display:inline-flex; color:var(--slate)}
   .has-contact svg{width:13px; height:13px}
   .pill{
     flex:none; font-size:10.5px; font-weight:600; letter-spacing:.02em;
     border-radius:999px; padding:4.5px 10px;
   }
-  .pill.pos{background:var(--pos-bg); color:var(--pos-tx)}
-  .pill.virtual{background:var(--virt-bg); color:var(--virt-tx)}
-  .pill.gateway{background:var(--gw-bg); color:var(--gw-tx)}
-  .pill.api{background:var(--api-bg); color:var(--api-tx)}
-  .pill.internal{background:var(--int-bg); color:var(--int-tx)}
+  .pill{background:var(--int-bg); color:var(--int-tx)}
 
   .empty{grid-column:1/-1; text-align:center; padding:80px 20px; color:var(--slate)}
   .empty b{display:block; font-size:19px; font-weight:600; color:var(--ink); margin-bottom:6px; letter-spacing:-.015em}
@@ -398,7 +393,7 @@
     <div class="legend" id="legend">
       <p style="margin:0 0 10px"><b>Every brand here is processing-compatible</b> &mdash; the source workbook lists only green-checkmark systems that can run Wholesale Payments processing, so the conversation is an integration, not a rip-and-replace.</p>
       <p style="margin:0 0 10px"><span class="pill pos">Point of Sale</span> <span class="pill virtual">Virtual Solution</span> <span class="pill gateway">Gateway</span> <span class="pill api">API Solution</span> How the brand connects &mdash; a countertop/register system, a cloud product, a payment gateway, or a direct API integration.</p>
-      <p style="margin:0"><b>Rank</b> is a 1&ndash;10 read on the software&rsquo;s overall strength today. <b>SaaS fees</b> are the vendor&rsquo;s published pricing where verifiable. A <b style="color:var(--green-tx)">phone badge</b> on a card means a direct integration line is on file. Confirm pricing and compatibility with the vendor before quoting a merchant.</p>
+      <p style="margin:0"><b>Rank</b> is a 1&ndash;10 read on the software&rsquo;s overall strength today. <b>SaaS fees</b> are the vendor&rsquo;s published pricing where verifiable. A <b>phone badge</b> on a card means a direct integration line is on file. Confirm pricing and compatibility with the vendor before quoting a merchant.</p>
     </div>
     <div class="grid" id="grid"></div>
   </main>
