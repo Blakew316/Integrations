@@ -76,7 +76,7 @@
   .nav-brand .t span{color:var(--slate); font-weight:400}
 
   /* ---------- hero ---------- */
-  .hero{padding:44px 0 38px; text-align:center}
+  .hero{padding:46px 0 10px; text-align:center}
   .hero .eyebrow{
     margin:0 0 10px; font-size:12px; font-weight:600; letter-spacing:.12em;
     text-transform:uppercase; color:var(--slate);
@@ -90,16 +90,6 @@
     margin:20px auto 0; max-width:72ch; color:var(--slate);
     font-size:clamp(17px,1.4vw,21px); line-height:1.5; letter-spacing:-.005em; text-wrap:pretty;
   }
-  .statband{
-    display:flex; justify-content:center; gap:0; margin:40px auto 0; flex-wrap:wrap;
-  }
-  .statband .s{
-    padding:2px 34px; text-align:center; border-left:1px solid var(--line);
-  }
-  .statband .s:first-child{border-left:0}
-  .statband b{display:block; font-size:28px; font-weight:600; letter-spacing:-.02em; font-variant-numeric:tabular-nums}
-  .statband b em{font-style:normal; color:var(--green-tx)}
-  .statband span{font-size:12px; color:var(--slate); letter-spacing:.02em}
 
   /* ---------- toolbar ---------- */
   .toolbar{
@@ -320,7 +310,6 @@
   @media (max-width:720px){
     .wrap{padding:0 16px}
     .hero{padding:44px 0 24px}
-    .statband .s{padding:2px 20px}
     .seg{overflow-x:auto; max-width:100%}
     .sheet{width:100%}
   }
@@ -349,7 +338,6 @@
       <p class="eyebrow">Compatible Brands Directory</p>
       <h1>Integration <span class="accent">Atlas</span></h1>
       <p class="sub">Every processing-compatible brand from the POS Conversions workbook &mdash; ranked, priced, and ready to work. Open any card for the breakdown and who to call.</p>
-      <div class="statband" id="stats"></div>
     </div>
   </header>
 
@@ -411,19 +399,6 @@ const state = { q:'', cat:null, sol:'', sort:'rank' };
 const $ = id => document.getElementById(id);
 const grid = $('grid'), sheet = $('sheet'), overlay = $('overlay');
 let lastFocus = null;
-
-/* ---------- stats ---------- */
-(function(){
-  const cats = new Set(DATA.map(d=>d.category));
-  const withContact = DATA.filter(d=>d.contact).length;
-  const top = DATA.filter(d=>d.rank>=8).length;
-  $('stats').innerHTML = [
-    ['<em>'+DATA.length+'</em>','compatible brands'],
-    [cats.size,'categories'],
-    [top,'ranked 8+'],
-    [withContact,'phone lines on file']
-  ].map(([b,s])=>'<div class="s"><b>'+b+'</b><span>'+s+'</span></div>').join('');
-})();
 
 /* ---------- category pills ---------- */
 (function(){
