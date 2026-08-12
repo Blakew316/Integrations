@@ -2,9 +2,17 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Integration Atlas</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2076%2076'%3E%3Cg%20transform%3D'translate(14%2C2)'%3E%3Crect%20x%3D'2'%20y%3D'10'%20width%3D'8'%20height%3D'34'%20rx%3D'4'%20fill%3D'%231B84E8'%2F%3E%3Crect%20x%3D'14'%20y%3D'4'%20width%3D'20'%20height%3D'64'%20rx%3D'6'%20fill%3D'%232FB65F'%2F%3E%3Cpath%20d%3D'M14%2010%20a6%206%200%200%201%206-6%20h8%20a6%206%200%200%201%206%206%20v9%20h-20%20z'%20fill%3D'%231B84E8'%2F%3E%3Cpath%20d%3D'M14%2056%20h20%20v6%20a6%206%200%200%201-6%206%20h-8%20a6%206%200%200%201-6-6%20z'%20fill%3D'%2380CD86'%2F%3E%3Crect%20x%3D'38'%20y%3D'18'%20width%3D'7'%20height%3D'42'%20rx%3D'3.5'%20fill%3D'%233DBE6C'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Integration Atlas">
+<meta name="theme-color" content="#F5F5F7" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <style>
   :root{
     --page:#F5F5F7; --card:#FFFFFF; --group:#F5F5F7; --elev:#FFFFFF;
@@ -574,6 +582,13 @@ $('legendBtn').addEventListener('click', ()=>{
 });
 
 render();
+
+/* ---------- PWA service worker ---------- */
+if ('serviceWorker' in navigator && location.protocol === 'https:') {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  });
+}
 </script>
 </body>
 </html>

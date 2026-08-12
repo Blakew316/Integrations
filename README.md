@@ -16,9 +16,12 @@ categories, each enriched with:
 
 ## Using it
 
-Open `index.html` in any browser — it's fully self-contained (no build step, no server,
-no external requests). Search with `/`, filter by category pills or solution type,
-and click any card for the full breakdown.
+Open `index.html` in any browser — no build step, no server needed. Search with `/`,
+filter by category pills or solution type, and click any card for the full breakdown.
+
+**Install as an app (PWA):** when hosted over HTTPS, open the site in Safari on
+iPhone/iPad → Share → **Add to Home Screen**. It installs with the Wholesale Payments
+logo as the app icon, launches full-screen, and keeps working offline.
 
 ## Files
 
@@ -28,6 +31,7 @@ and click any card for the full breakdown.
 | `data/integrations.json` | The enriched dataset, for reuse |
 | `data/POSConversions_CompatibleBrands_byCategory.xlsx` | The source workbook |
 | `data/pos-data.json` | Raw POS Conversions site data (all 1,602 entries) |
+| `manifest.webmanifest`, `sw.js`, `icon-*.png`, `apple-touch-icon.png` | PWA layer — installable on iOS/Android with offline support |
 
 ## Data provenance
 
