@@ -7,6 +7,8 @@ categories, each enriched with:
 - **Rank** — a 1–10 read on the software's overall strength today (10 = best)
 - **SaaS fees** — the vendor's published pricing, web-verified for major vendors
 - **3 benefits** — why merchants pick it
+- **Who to call** — direct integration phone lines, contacts, and websites where on
+  file (sourced from the Integration List workbook; 19 brands have direct lines today)
 - **Directory details** — category, solution type (Point of Sale / Virtual Solution /
   Gateway / API Solution), niche, and listing date from the workbook
 

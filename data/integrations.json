@@ -1073,7 +1073,10 @@
    "Supports cards, cash, and loyalty programs"
   ],
   "website": "https://www.hamiltonmfg.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "800-837-5561"
+  }
  },
  {
   "category": "Car Wash, Fuel & Unattended Self-Service",
@@ -1835,7 +1838,10 @@
    "Improves last-mile service visibility"
   ],
   "website": "https://www.dispatch.me",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "877-796-3336"
+  }
  },
  {
   "category": "Field Service, Trades & Home Services",
@@ -2361,7 +2367,12 @@
    "Basic inventory and sales reporting"
   ],
   "website": null,
-  "confidence": "low"
+  "confidence": "low",
+  "contact": {
+   "phone": "603-320-4298",
+   "email": "ben@acadiapos.com",
+   "name": "Benjamin Topper"
+  }
  },
  {
   "category": "General / Multi-Industry POS",
@@ -3758,7 +3769,10 @@
    "Real-time inventory and loyalty tools"
   ],
   "website": "https://www.ecrs.com",
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "800-211-1172"
+  }
  },
  {
   "category": "Grocery, Convenience & Liquor",
@@ -7408,7 +7422,10 @@
    "Broad ecosystem and integrations"
   ],
   "website": "https://www.ncrvoyix.com",
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "877-794-7237"
+  }
  },
  {
   "category": "Restaurants, Bars & Food Service",
@@ -7947,7 +7964,10 @@
    "Global dealer network and multi-language support"
   ],
   "website": "https://maitredpos.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "888-404-2662"
+  }
  },
  {
   "category": "Restaurants, Bars & Food Service",
@@ -8001,7 +8021,11 @@
    "Deep hospitality ecosystem and integrations"
   ],
   "website": "https://www.oracle.com/food-beverage/",
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "713-783-9500",
+   "phone2": "800-633-0738"
+  }
  },
  {
   "category": "Restaurants, Bars & Food Service",
@@ -8161,7 +8185,10 @@
    "Broad international reseller network"
   ],
   "website": "https://www.partech.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "315-738-0600"
+  }
  },
  {
   "category": "Restaurants, Bars & Food Service",
@@ -8353,7 +8380,10 @@
    "Direct US-based support from the vendor"
   ],
   "website": "https://www.selbysoft.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "253-770-2993"
+  }
  },
  {
   "category": "Restaurants, Bars & Food Service",
@@ -8757,7 +8787,10 @@
    "Large installed dealer-supported base"
   ],
   "website": null,
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "845-920-0888"
+  }
  },
  {
   "category": "Retail - General POS",
@@ -8988,7 +9021,10 @@
    "Affordable perpetual license model"
   ],
   "website": "https://www.keystrokepos.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "210-367-5396"
+  }
  },
  {
   "category": "Retail - General POS",
@@ -9043,7 +9079,10 @@
    "Clear migration path within Lightspeed"
   ],
   "website": "https://www.lightspeedhq.com",
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "800-820-9814"
+  }
  },
  {
   "category": "Retail - General POS",
@@ -9115,7 +9154,10 @@
    "Integrated loyalty and email marketing"
   ],
   "website": null,
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "877-270-3475"
+  }
  },
  {
   "category": "Retail - General POS",
@@ -9399,7 +9441,10 @@
    "Strong inventory, replenishment, and reporting depth"
   ],
   "website": "https://www.retailpro.com",
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "916-605-7200"
+  }
  },
  {
   "category": "Retail - General POS",
@@ -9607,7 +9652,10 @@
    "Multi-store inventory and employee controls"
   ],
   "website": "https://www.cellsmartpos.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "877-348-4660"
+  }
  },
  {
   "category": "Retail - Specialty & Niche",
@@ -9712,7 +9760,10 @@
    "Wedding and event proposal tools"
   ],
   "website": "https://www.floranext.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "email": "merchantservices@floranext.com"
+  }
  },
  {
   "category": "Retail - Specialty & Niche",
@@ -9974,7 +10025,10 @@
    "Strong reporting and customer marketing tools"
   ],
   "website": "https://www.edgeuser.com",
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "866-580-3343"
+  }
  },
  {
   "category": "Retail - Specialty & Niche",
@@ -10094,7 +10148,10 @@
    "Established name in tanning industry"
   ],
   "website": "https://www.sunlync.com",
-  "confidence": "medium"
+  "confidence": "medium",
+  "contact": {
+   "phone": "866-786-5962"
+  }
  },
  {
   "category": "Salon, Spa, Barber & Beauty",
@@ -10703,7 +10760,10 @@
    "Driver apps, dispatch, and payments integrated"
   ],
   "website": "https://www.limoanywhere.com",
-  "confidence": "high"
+  "confidence": "high",
+  "contact": {
+   "phone": "888-888-0302"
+  }
  },
  {
   "category": "Transportation, Moving & Delivery",
