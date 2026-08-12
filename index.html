@@ -4,48 +4,44 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Integration Atlas</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2315315C'/%3E%3Cpath d='M18 32 H46' stroke='%232EB681' stroke-width='4' stroke-linecap='round'/%3E%3Cpath d='M41 27 L47 32 L41 37' stroke='%232EB681' stroke-width='4' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3Ccircle cx='30' cy='32' r='2.2' fill='%232EB681'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23FFFFFF'/%3E%3Crect x='14' y='16' width='7' height='26' rx='3.5' fill='%231B84E8'/%3E%3Cpath d='M25 15 a4 4 0 0 1 4-4 h8 a4 4 0 0 1 4 4 v34 a4 4 0 0 1-4 4 h-8 a4 4 0 0 1-4-4 z' fill='%232FB65F'/%3E%3Cpath d='M25 15 a4 4 0 0 1 4-4 h8 a4 4 0 0 1 4 4 v7 h-16 z' fill='%231B84E8'/%3E%3Crect x='45' y='23' width='6' height='26' rx='3' fill='%233DBE6C'/%3E%3C/svg%3E">
 <style>
   :root{
-    --page:#FFFFFF; --card:#FFFFFF; --line:#ECECF2; --line-strong:#D7D9E3;
-    --ink:#14263F; --slate:#6B7480; --faint:#A9AFBC;
-    --emerald:#2EB681; --emerald-deep:#177A56;
-    --tile-a:#1E4070; --tile-b:#15315C; --tile-c:#0D2244;
-    --chip:#F4F5F8; --hover:#F8F9FB; --shadow:0 18px 50px rgba(13,34,68,.16);
-    --ok-bg:#E7F6EF; --ok-tx:#177A56;
-    --no-bg:#FBEAEA; --no-tx:#B03A3A;
-    --likely-bg:#E9F1FB; --likely-tx:#2F66A8;
-    --maybe-bg:#FBF3E2; --maybe-tx:#96700F;
-    --unlikely-bg:#F6ECE4; --unlikely-tx:#A05C2C;
-    --unk-bg:#EFF1F5; --unk-tx:#6B7480;
+    --page:#FFFFFF; --card:#FFFFFF; --line:#E8ECF2; --line-strong:#D3DAE5;
+    --ink:#0D1B4C; --slate:#5C6B84; --faint:#9AA5B5; --grey:#A8ADB5;
+    --blue:#097BE8; --blue-deep:#0A5FBE; --green:#2FB65F; --green-soft:#80CD86;
+    --chip:#F3F6FA; --hover:#F7FAFD; --shadow:0 18px 50px rgba(13,27,76,.16);
+    --pos-bg:#E7F1FD; --pos-tx:#0A5FBE;
+    --virt-bg:#E9F7EE; --virt-tx:#1E8747;
+    --gw-bg:#FBF3E2; --gw-tx:#96700F;
+    --api-bg:#F1EDFB; --api-tx:#6247B8;
+    --int-bg:#EFF1F5; --int-tx:#5C6B84;
     --wm:-apple-system,"SF Pro Display","Helvetica Neue",Helvetica,Arial,sans-serif;
     --mono:"SF Mono","JetBrains Mono","IBM Plex Mono",ui-monospace,Menlo,monospace;
   }
   @media (prefers-color-scheme: dark){
     :root:not([data-theme="light"]){
-      --page:#0B1730; --card:#111F3B; --line:#1E2E4E; --line-strong:#2A3C60;
-      --ink:#E8ECF4; --slate:#93A0B4; --faint:#5D6A82;
-      --emerald:#3BC98F; --emerald-deep:#5CD8A6;
-      --chip:#16264494; --hover:#152442; --shadow:0 18px 50px rgba(0,0,0,.5);
-      --ok-bg:#12382B; --ok-tx:#5CD8A6;
-      --no-bg:#3D1E1E; --no-tx:#EE9090;
-      --likely-bg:#1B2F4B; --likely-tx:#8AB6EA;
-      --maybe-bg:#3A2F14; --maybe-tx:#E4BE62;
-      --unlikely-bg:#38271A; --unlikely-tx:#DFA173;
-      --unk-bg:#1B2740; --unk-tx:#93A0B4;
+      --page:#0A1230; --card:#101B3E; --line:#1D2A52; --line-strong:#2A3963;
+      --ink:#E9EDF6; --slate:#96A2BB; --faint:#5E6B88; --grey:#8F97A3;
+      --blue:#3D9BF0; --blue-deep:#6FB6F5; --green:#3DCB6F; --green-soft:#80CD86;
+      --chip:#16234A; --hover:#152147; --shadow:0 18px 50px rgba(0,0,0,.5);
+      --pos-bg:#14294D; --pos-tx:#7FBCF3;
+      --virt-bg:#12382B; --virt-tx:#6BD597;
+      --gw-bg:#3A2F14; --gw-tx:#E4BE62;
+      --api-bg:#251D45; --api-tx:#B3A1EE;
+      --int-bg:#1B2740; --int-tx:#96A2BB;
     }
   }
   :root[data-theme="dark"]{
-    --page:#0B1730; --card:#111F3B; --line:#1E2E4E; --line-strong:#2A3C60;
-    --ink:#E8ECF4; --slate:#93A0B4; --faint:#5D6A82;
-    --emerald:#3BC98F; --emerald-deep:#5CD8A6;
-    --chip:#16264494; --hover:#152442; --shadow:0 18px 50px rgba(0,0,0,.5);
-    --ok-bg:#12382B; --ok-tx:#5CD8A6;
-    --no-bg:#3D1E1E; --no-tx:#EE9090;
-    --likely-bg:#1B2F4B; --likely-tx:#8AB6EA;
-    --maybe-bg:#3A2F14; --maybe-tx:#E4BE62;
-    --unlikely-bg:#38271A; --unlikely-tx:#DFA173;
-    --unk-bg:#1B2740; --unk-tx:#93A0B4;
+    --page:#0A1230; --card:#101B3E; --line:#1D2A52; --line-strong:#2A3963;
+    --ink:#E9EDF6; --slate:#96A2BB; --faint:#5E6B88; --grey:#8F97A3;
+    --blue:#3D9BF0; --blue-deep:#6FB6F5; --green:#3DCB6F; --green-soft:#80CD86;
+    --chip:#16234A; --hover:#152147; --shadow:0 18px 50px rgba(0,0,0,.5);
+    --pos-bg:#14294D; --pos-tx:#7FBCF3;
+    --virt-bg:#12382B; --virt-tx:#6BD597;
+    --gw-bg:#3A2F14; --gw-tx:#E4BE62;
+    --api-bg:#251D45; --api-tx:#B3A1EE;
+    --int-bg:#1B2740; --int-tx:#96A2BB;
   }
   *{box-sizing:border-box}
   html,body{margin:0}
@@ -57,25 +53,24 @@
   .wrap{max-width:1240px; margin:0 auto; padding:0 28px}
 
   /* ---------- header ---------- */
-  header.hero{padding:40px 0 26px}
-  .brandrow{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
-  .tile{
-    width:64px; height:64px; border-radius:15px; flex:none;
-    display:flex; align-items:center; justify-content:center;
-    background:radial-gradient(130% 130% at 18% -8%, var(--tile-a) 0%, var(--tile-b) 44%, var(--tile-c) 100%);
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.07), 0 8px 24px rgba(13,34,68,.28);
-  }
-  .tile svg{width:44px; height:44px; display:block}
+  header.hero{padding:42px 0 26px}
+  .brandrow{display:flex; align-items:center; gap:20px; flex-wrap:wrap}
+  .logo{display:flex; align-items:center; gap:13px; flex:none}
+  .logo svg{width:46px; height:64px; display:block}
+  .logo .lockup{display:flex; flex-direction:column; align-items:flex-end; line-height:1}
+  .logo .w1{font-size:31px; font-weight:700; letter-spacing:-.02em; color:var(--ink)}
+  .logo .w2{font-size:20px; font-weight:400; letter-spacing:.01em; color:var(--grey); margin-top:3px}
+  .brandrow .divider{width:1px; height:52px; background:var(--line-strong); flex:none}
   .brandtext .eyebrow{
     font-family:var(--mono); font-size:10.5px; letter-spacing:.22em;
     text-transform:uppercase; color:var(--slate); margin:0 0 5px;
   }
   .brandtext h1{
-    margin:0; font-size:clamp(30px,4.6vw,44px); font-weight:700;
-    letter-spacing:-.045em; line-height:.98; text-wrap:balance;
+    margin:0; font-size:clamp(28px,4.2vw,40px); font-weight:700;
+    letter-spacing:-.04em; line-height:.98; text-wrap:balance;
   }
-  .brandtext h1 .soft{color:var(--slate); font-weight:500; letter-spacing:-.02em}
-  .lede{margin:14px 0 0; max-width:62ch; color:var(--slate); font-size:15px; line-height:1.55}
+  .brandtext h1 .soft{color:var(--blue); font-weight:600}
+  .lede{margin:16px 0 0; max-width:64ch; color:var(--slate); font-size:15px; line-height:1.55}
 
   /* ---------- stats ---------- */
   .stats{display:flex; gap:12px; flex-wrap:wrap; margin:24px 0 4px}
@@ -85,7 +80,7 @@
   }
   .stat b{display:block; font-size:24px; letter-spacing:-.03em; font-variant-numeric:tabular-nums}
   .stat span{font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate)}
-  .stat b em{font-style:normal; color:var(--emerald)}
+  .stat b em{font-style:normal; color:var(--green)}
 
   /* ---------- filter bar ---------- */
   .bar{
@@ -98,7 +93,7 @@
     border:1px solid var(--line-strong); border-radius:12px; padding:0 14px; height:42px;
     background:var(--card); transition:border-color .15s ease;
   }
-  .search:focus-within{border-color:var(--emerald)}
+  .search:focus-within{border-color:var(--blue)}
   .search svg{width:15px; height:15px; flex:none; stroke:var(--slate)}
   .search input{
     border:0; outline:0; background:transparent; color:var(--ink);
@@ -113,11 +108,10 @@
     appearance:none; -webkit-appearance:none; height:42px; padding:0 34px 0 14px;
     border:1px solid var(--line-strong); border-radius:12px; background:var(--card);
     color:var(--ink); font:inherit; font-size:13.5px; cursor:pointer;
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%236B7480' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%235C6B84' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
     background-repeat:no-repeat; background-position:right 13px center;
   }
-  select:focus-visible, .search input:focus-visible{outline:none}
-  select:focus-visible{border-color:var(--emerald)}
+  select:focus-visible{outline:none; border-color:var(--blue)}
   .cats{
     display:flex; gap:8px; overflow-x:auto; padding:12px 0 14px;
     scrollbar-width:thin; -webkit-overflow-scrolling:touch;
@@ -129,12 +123,10 @@
     transition:background .12s ease, border-color .12s ease, color .12s ease;
   }
   .cat:hover{background:var(--hover)}
-  .cat[aria-pressed="true"]{
-    background:var(--ink); border-color:var(--ink); color:var(--page);
-  }
+  .cat[aria-pressed="true"]{background:var(--blue); border-color:var(--blue); color:#fff}
   .cat .n{font-family:var(--mono); font-size:10.5px; color:var(--faint); margin-left:6px}
-  .cat[aria-pressed="true"] .n{color:inherit; opacity:.65}
-  .cat:focus-visible{outline:2px solid var(--emerald); outline-offset:2px}
+  .cat[aria-pressed="true"] .n{color:inherit; opacity:.7}
+  .cat:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
 
   .meta-row{
     display:flex; align-items:baseline; justify-content:space-between; gap:14px;
@@ -150,7 +142,7 @@
   .legend-btn:hover{color:var(--ink)}
   .legend{
     display:none; border:1px solid var(--line); border-radius:14px; background:var(--card);
-    padding:16px 18px; margin:0 0 16px; font-size:13.5px; line-height:1.6; color:var(--slate);
+    padding:16px 18px; margin:0 0 16px; font-size:13.5px; line-height:1.65; color:var(--slate);
   }
   .legend.open{display:block}
   .legend b{color:var(--ink)}
@@ -167,12 +159,12 @@
     display:flex; flex-direction:column; gap:10px; font:inherit; color:inherit;
     transition:transform .16s ease, border-color .16s ease, box-shadow .16s ease;
   }
-  .item:hover{transform:translateY(-3px); border-color:var(--line-strong); box-shadow:0 10px 26px rgba(13,34,68,.10)}
-  .item:focus-visible{outline:2px solid var(--emerald); outline-offset:2px}
+  .item:hover{transform:translateY(-3px); border-color:var(--line-strong); box-shadow:0 10px 26px rgba(13,27,76,.10)}
+  .item:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
   .item-top{display:flex; align-items:flex-start; justify-content:space-between; gap:12px}
   .item h3{margin:0; font-size:16.5px; font-weight:640; letter-spacing:-.015em; line-height:1.25}
   .item .cat-label{
-    font-family:var(--mono); font-size:10px; letter-spacing:.13em; text-transform:uppercase;
+    font-family:var(--mono); font-size:10px; letter-spacing:.12em; text-transform:uppercase;
     color:var(--slate); margin-top:4px; display:block;
   }
   .score{
@@ -182,7 +174,7 @@
   }
   .score b{font-size:16px; font-weight:700; color:inherit}
   .score i{font-style:normal; font-size:8px; opacity:.7; margin-top:2px; letter-spacing:.08em}
-  .score.hi{background:var(--ok-bg); color:var(--ok-tx)}
+  .score.hi{background:var(--virt-bg); color:var(--virt-tx)}
   .score.lo{opacity:.75}
   .item .blurb{margin:0; font-size:13.5px; line-height:1.5; color:var(--slate); min-height:2.9em}
   .item-foot{
@@ -194,22 +186,19 @@
     flex:none; font-family:var(--mono); font-size:9.5px; letter-spacing:.1em; text-transform:uppercase;
     border-radius:999px; padding:4px 9px;
   }
-  .pill.integrated{background:var(--ok-bg); color:var(--ok-tx)}
-  .pill.closed{background:var(--no-bg); color:var(--no-tx)}
-  .pill.likely{background:var(--likely-bg); color:var(--likely-tx)}
-  .pill.maybe{background:var(--maybe-bg); color:var(--maybe-tx)}
-  .pill.unlikely{background:var(--unlikely-bg); color:var(--unlikely-tx)}
-  .pill.unknown{background:var(--unk-bg); color:var(--unk-tx)}
+  .pill.pos{background:var(--pos-bg); color:var(--pos-tx)}
+  .pill.virtual{background:var(--virt-bg); color:var(--virt-tx)}
+  .pill.gateway{background:var(--gw-bg); color:var(--gw-tx)}
+  .pill.api{background:var(--api-bg); color:var(--api-tx)}
+  .pill.internal{background:var(--int-bg); color:var(--int-tx)}
 
-  .empty{
-    grid-column:1/-1; text-align:center; padding:70px 20px; color:var(--slate);
-  }
+  .empty{grid-column:1/-1; text-align:center; padding:70px 20px; color:var(--slate)}
   .empty b{display:block; font-size:18px; color:var(--ink); margin-bottom:6px; letter-spacing:-.02em}
 
   /* ---------- modal ---------- */
   .overlay{
     position:fixed; inset:0; z-index:60; display:none;
-    background:rgba(13,34,68,.45); backdrop-filter:blur(3px);
+    background:rgba(13,27,76,.45); backdrop-filter:blur(3px);
   }
   .overlay.open{display:block}
   .sheet{
@@ -230,7 +219,7 @@
     color:var(--slate); cursor:pointer; font-size:15px; line-height:1;
   }
   .sheet-close:hover{color:var(--ink); background:var(--hover)}
-  .sheet-close:focus-visible{outline:2px solid var(--emerald); outline-offset:2px}
+  .sheet-close:focus-visible{outline:2px solid var(--blue); outline-offset:2px}
   .sheet-head .cat-label{
     font-family:var(--mono); font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--slate);
   }
@@ -247,7 +236,7 @@
   .meter-row{display:flex; align-items:center; gap:14px}
   .meter{display:flex; gap:4px; flex:1}
   .meter i{height:8px; flex:1; border-radius:3px; background:var(--chip)}
-  .meter i.on{background:var(--emerald)}
+  .meter i.on{background:var(--green)}
   .meter-num{font-family:var(--mono); font-size:22px; font-weight:700; letter-spacing:-.02em}
   .meter-num small{font-size:11px; color:var(--slate); font-weight:400}
   .fee-big{font-family:var(--mono); font-size:19px; font-weight:600; letter-spacing:-.01em; margin:0}
@@ -258,35 +247,33 @@
   .benefits svg{flex:none; width:17px; height:17px; margin-top:1px}
   .kv{display:flex; flex-direction:column; gap:9px; font-size:13.5px}
   .kv .row{display:flex; justify-content:space-between; gap:14px}
-  .kv .k{color:var(--slate)}
+  .kv .k{color:var(--slate); flex:none}
   .kv .v{text-align:right; font-variant-numeric:tabular-nums}
-  .plats{display:flex; gap:6px; flex-wrap:wrap; justify-content:flex-end}
-  .plat{
-    font-family:var(--mono); font-size:10px; letter-spacing:.06em;
-    border:1px solid var(--line-strong); border-radius:7px; padding:3px 8px; color:var(--ink);
-  }
   .visit{
     display:inline-flex; align-items:center; gap:8px; margin-top:2px;
-    background:var(--emerald); color:#fff; border:0; border-radius:11px;
+    background:var(--blue); color:#fff; border:0; border-radius:11px;
     padding:11px 18px; font:inherit; font-size:14px; font-weight:600;
     cursor:pointer; text-decoration:none; transition:filter .12s ease;
   }
-  .visit:hover{filter:brightness(1.06)}
+  .visit:hover{filter:brightness(1.07)}
   .visit:focus-visible{outline:2px solid var(--ink); outline-offset:2px}
   .visit svg{width:13px; height:13px}
-  :root[data-theme="dark"] .visit{color:#0B1730}
-  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .visit{color:#0B1730} }
+  :root[data-theme="dark"] .visit{color:#0A1230}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .visit{color:#0A1230} }
 
   footer{
     border-top:1px solid var(--line); padding:26px 0 46px; margin-top:10px;
     font-family:var(--mono); font-size:11px; line-height:1.75; letter-spacing:.03em;
-    color:var(--slate); max-width:76ch;
+    color:var(--slate);
   }
-  footer .wordmark b{color:var(--ink)}
+  footer .wordmark b{color:var(--ink); font-weight:700}
+  footer .wordmark span{color:var(--grey)}
+  footer p{max-width:76ch}
 
-  @media (max-width:560px){
+  @media (max-width:640px){
     .wrap{padding:0 18px}
     header.hero{padding:28px 0 18px}
+    .brandrow .divider{display:none}
     .stats .stat{min-width:calc(50% - 6px); flex:1}
     .sheet{width:100%}
   }
@@ -300,25 +287,23 @@
   <header class="hero">
     <div class="wrap">
       <div class="brandrow">
-        <div class="tile" aria-hidden="true">
-          <svg viewBox="0 0 64 64" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="8" y="26" width="14" height="14" rx="3" stroke="#FFFFFF" stroke-width="3"/>
-            <circle cx="15" cy="33" r="1.6" fill="#FFFFFF"/>
-            <path d="M22 30 H30 Q34 30 34 26 V22 Q34 18 38 18 H49" stroke="rgba(255,255,255,.5)" stroke-width="2.4"/>
-            <circle cx="52.5" cy="18" r="2.4" stroke="rgba(255,255,255,.5)" stroke-width="2.4"/>
-            <path d="M22 33 H51" stroke="#2EB681" stroke-width="3.2"/>
-            <path d="M47.5 29.5 L52 33 L47.5 36.5" stroke="#2EB681" stroke-width="3.2"/>
-            <circle cx="36" cy="33" r="1.6" fill="#2EB681"/>
-            <path d="M22 36 H30 Q34 36 34 40 V44 Q34 48 38 48 H49" stroke="rgba(255,255,255,.5)" stroke-width="2.4"/>
-            <circle cx="52.5" cy="48" r="2.4" stroke="rgba(255,255,255,.5)" stroke-width="2.4"/>
+        <div class="logo" aria-label="Wholesale Payments">
+          <svg viewBox="0 0 54 76" aria-hidden="true">
+            <rect x="2" y="10" width="8" height="34" rx="4" fill="#1B84E8"/>
+            <rect x="14" y="4" width="20" height="64" rx="6" fill="#2FB65F"/>
+            <path d="M14 10 a6 6 0 0 1 6-6 h8 a6 6 0 0 1 6 6 v9 h-20 z" fill="#1B84E8"/>
+            <path d="M14 56 h20 v6 a6 6 0 0 1-6 6 h-8 a6 6 0 0 1-6-6 z" fill="#80CD86"/>
+            <rect x="38" y="18" width="7" height="42" rx="3.5" fill="#3DBE6C"/>
           </svg>
+          <span class="lockup"><span class="w1">wholesale</span><span class="w2">payments</span></span>
         </div>
+        <div class="divider" aria-hidden="true"></div>
         <div class="brandtext">
-          <p class="eyebrow">processorfreedom.com &middot; integration directory</p>
+          <p class="eyebrow">compatible brands directory</p>
           <h1>Integration <span class="soft">Atlas</span></h1>
         </div>
       </div>
-      <p class="lede">Every POS system, business platform, and gateway from the integration workbook &mdash; scored, categorized, and priced. Filter by category, check processing compatibility, and open any card for the full breakdown.</p>
+      <p class="lede">Every processing-compatible brand from the POS Conversions workbook &mdash; scored, priced, and organized by category. Filter to a category, then open any card for the ranking, SaaS fees, and why merchants pick it.</p>
       <div class="stats" id="stats"></div>
     </div>
   </header>
@@ -328,22 +313,16 @@
       <div class="controls">
         <label class="search">
           <svg viewBox="0 0 20 20" fill="none" stroke-width="1.8"><circle cx="9" cy="9" r="6.2"/><path d="M13.7 13.7 L17.5 17.5"/></svg>
-          <input id="q" type="search" placeholder="Search 735 integrations&hellip;" autocomplete="off" aria-label="Search integrations">
+          <input id="q" type="search" placeholder="Search brands, categories, niches&hellip;" autocomplete="off" aria-label="Search brands">
           <kbd>/</kbd>
         </label>
-        <select id="status" aria-label="Filter by integration status">
-          <option value="">All statuses</option>
-          <option value="integrated">Integrated before</option>
-          <option value="likely">Likely</option>
-          <option value="maybe">Maybe</option>
-          <option value="unlikely">Unlikely</option>
-          <option value="closed">Won&rsquo;t allow</option>
-          <option value="unknown">Unknown</option>
-        </select>
-        <select id="platform" aria-label="Filter by processing platform">
-          <option value="">All platforms</option>
-          <option>Omaha</option><option>Rapid Connect</option><option>Nashville</option>
-          <option>North</option><option>Buypass</option><option>TSYS</option>
+        <select id="soltype" aria-label="Filter by solution type">
+          <option value="">All solution types</option>
+          <option>Point of Sale</option>
+          <option>Virtual Solution</option>
+          <option>Gateway</option>
+          <option>API Solution</option>
+          <option>Internal</option>
         </select>
         <select id="sort" aria-label="Sort results">
           <option value="rank">Sort: Rank</option>
@@ -358,13 +337,12 @@
   <main class="wrap">
     <div class="meta-row">
       <p class="count" id="count"></p>
-      <button class="legend-btn" id="legendBtn" aria-expanded="false">What do the statuses mean?</button>
+      <button class="legend-btn" id="legendBtn" aria-expanded="false">How to read this directory</button>
     </div>
     <div class="legend" id="legend">
-      <p style="margin:0 0 10px"><span class="pill integrated">Integrated before</span> This software has processed on our rails previously &mdash; the cleanest path.</p>
-      <p style="margin:0 0 10px"><span class="pill likely">Likely</span> <span class="pill maybe">Maybe</span> <span class="pill unlikely">Unlikely</span> Gradations from the source workbook &mdash; open the card and verify with the vendor before promising anything.</p>
-      <p style="margin:0 0 10px"><span class="pill closed">Won&rsquo;t allow</span> Locked to its own bundled processing (e.g. Square, Toast) &mdash; a rip-and-replace conversation, not an integration.</p>
-      <p style="margin:0"><b>Rank</b> is a 1&ndash;10 read on the software&rsquo;s overall strength today (market position, capability, viability). <b>SaaS fees</b> are the vendor&rsquo;s published pricing where verifiable; treat as directional.</p>
+      <p style="margin:0 0 10px"><b>Every brand here is processing-compatible</b> &mdash; the source workbook lists only green-checkmark systems that can run Wholesale Payments processing, so the conversation is an integration, not a rip-and-replace.</p>
+      <p style="margin:0 0 10px"><span class="pill pos">Point of Sale</span> <span class="pill virtual">Virtual Solution</span> <span class="pill gateway">Gateway</span> <span class="pill api">API Solution</span> How the brand connects &mdash; a countertop/register system, a cloud/virtual product, a payment gateway, or a direct API integration.</p>
+      <p style="margin:0"><b>Rank</b> is a 1&ndash;10 read on the software&rsquo;s overall strength today (market position, capability, viability). <b>SaaS fees</b> are the vendor&rsquo;s published pricing where verifiable &mdash; treat as directional and confirm before quoting a merchant.</p>
     </div>
     <div class="grid" id="grid"></div>
   </main>
@@ -374,19 +352,19 @@
 
   <footer>
     <div class="wrap">
-      <p class="wordmark" style="margin:0 0 6px"><span>processor</span><b>freedom</b> &mdash; Integration Atlas</p>
-      <p style="margin:0">Source: Integration List workbook (735 unique systems). Statuses mirror the sheet; rankings and SaaS fees are directional estimates, web-verified for major vendors, Aug 2026. Always confirm pricing and compatibility with the vendor before quoting a merchant.</p>
+      <p class="wordmark" style="margin:0 0 6px"><b>wholesale</b> <span>payments</span> &mdash; Integration Atlas</p>
+      <p style="margin:0">Source: POS Conversions &mdash; Compatible Brands by Category workbook (624 brands, 33 categories). Rankings and SaaS fees are directional estimates, web-verified for major vendors, Aug 2026. Always confirm pricing and compatibility with the vendor before quoting a merchant.</p>
     </div>
   </footer>
 
 <script>
 const DATA = /*__DATA__*/[];
 
-const STATUS_LABEL = {
-  integrated:'Integrated before', closed:'Won’t allow', likely:'Likely',
-  maybe:'Maybe', unlikely:'Unlikely', unknown:'Unknown'
+const SOL_CLASS = {
+  'Point of Sale':'pos', 'Virtual Solution':'virtual', 'Gateway':'gateway',
+  'API Solution':'api', 'Internal':'internal'
 };
-const state = { q:'', cat:null, status:'', platform:'', sort:'rank' };
+const state = { q:'', cat:null, sol:'', sort:'rank' };
 const $ = id => document.getElementById(id);
 const grid = $('grid'), sheet = $('sheet'), overlay = $('overlay');
 let lastFocus = null;
@@ -394,12 +372,12 @@ let lastFocus = null;
 /* ---------- stats ---------- */
 (function(){
   const cats = new Set(DATA.map(d=>d.category));
-  const integrated = DATA.filter(d=>d.status==='integrated').length;
+  const pos = DATA.filter(d=>d.solution_type==='Point of Sale').length;
   const top = DATA.filter(d=>d.rank>=8).length;
   $('stats').innerHTML = [
-    ['<em>'+DATA.length+'</em>','integrations'],
-    [integrated,'integrated before'],
+    ['<em>'+DATA.length+'</em>','compatible brands'],
     [cats.size,'categories'],
+    [pos,'point of sale'],
     [top,'ranked 8+']
   ].map(([b,s])=>'<div class="stat"><b>'+b+'</b><span>'+s+'</span></div>').join('');
 })();
@@ -408,7 +386,7 @@ let lastFocus = null;
 (function(){
   const counts = {};
   DATA.forEach(d=>counts[d.category]=(counts[d.category]||0)+1);
-  const cats = Object.keys(counts).sort((a,b)=>counts[b]-counts[a]);
+  const cats = Object.keys(counts).sort((a,b)=>counts[b]-counts[a] || a.localeCompare(b));
   const host = $('cats');
   const mk = (label,val,n)=>{
     const b = document.createElement('button');
@@ -433,10 +411,9 @@ function filtered(){
   const q = state.q.trim().toLowerCase();
   let out = DATA.filter(d=>{
     if(state.cat && d.category!==state.cat) return false;
-    if(state.status && d.status!==state.status) return false;
-    if(state.platform && !(d.platforms && d.platforms[state.platform])) return false;
+    if(state.sol && d.solution_type!==state.sol) return false;
     if(q){
-      const hay = (d.name+' '+d.category+' '+(d.blurb||'')+' '+(d.gateway||'')).toLowerCase();
+      const hay = (d.name+' '+d.category+' '+(d.niche||'')+' '+(d.blurb||'')).toLowerCase();
       if(!hay.includes(q)) return false;
     }
     return true;
@@ -458,13 +435,14 @@ function render(){
     const el = document.createElement('button');
     el.className='item'; el.type='button';
     const cls = d.rank>=8?'hi':(d.rank<=4?'lo':'');
+    const sol = SOL_CLASS[d.solution_type]||'internal';
     el.innerHTML =
       '<div class="item-top"><div><h3>'+esc(d.name)+'</h3>'+
       '<span class="cat-label">'+esc(d.category)+'</span></div>'+
       '<div class="score '+cls+'"><b>'+d.rank+'</b><i>/10</i></div></div>'+
-      '<p class="blurb">'+esc(d.blurb||'')+'</p>'+
+      '<p class="blurb">'+esc(d.blurb||d.niche||'')+'</p>'+
       '<div class="item-foot"><span class="fee">'+esc(d.fee||'—')+'</span>'+
-      '<span class="pill '+d.status+'">'+STATUS_LABEL[d.status]+'</span></div>';
+      '<span class="pill '+sol+'">'+esc(d.solution_type||'—')+'</span></div>';
     el.addEventListener('click',()=>openSheet(d));
     frag.appendChild(el);
   });
@@ -475,19 +453,18 @@ function render(){
 }
 
 /* ---------- detail sheet ---------- */
-const CHECK = '<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.6" stroke="var(--emerald)" stroke-width="1.7"/><path d="M6.4 10.4 L9 13 L13.8 7.6" stroke="var(--emerald)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+const CHECK = '<svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="8.6" stroke="var(--green)" stroke-width="1.7"/><path d="M6.4 10.4 L9 13 L13.8 7.6" stroke="var(--green)" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 const EXT = '<svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2.5 H2.5 V11.5 H11.5 V8"/><path d="M8.5 2 H12 V5.5"/><path d="M12 2 L6.8 7.2"/></svg>';
 
 function openSheet(d){
   lastFocus = document.activeElement;
   const meter = Array.from({length:10},(_,i)=>'<i class="'+(i<d.rank?'on':'')+'"></i>').join('');
-  const plats = d.platforms ? Object.keys(d.platforms) : [];
+  const sol = SOL_CLASS[d.solution_type]||'internal';
   const rows = [];
-  rows.push('<div class="row"><span class="k">Status</span><span class="v"><span class="pill '+d.status+'">'+STATUS_LABEL[d.status]+'</span></span></div>');
-  if(plats.length) rows.push('<div class="row"><span class="k">Platforms</span><span class="v plats">'+plats.map(p=>'<span class="plat">'+esc(p)+'</span>').join('')+'</span></div>');
-  if(d.gateway) rows.push('<div class="row"><span class="k">Gateway / via</span><span class="v">'+esc(d.gateway)+'</span></div>');
-  if(d.last_verified) rows.push('<div class="row"><span class="k">Sheet last touched</span><span class="v">'+esc(d.last_verified)+'</span></div>');
-  if(d.id) rows.push('<div class="row"><span class="k">Record #</span><span class="v">'+esc(d.id)+'</span></div>');
+  rows.push('<div class="row"><span class="k">Category</span><span class="v">'+esc(d.category)+'</span></div>');
+  rows.push('<div class="row"><span class="k">Solution type</span><span class="v"><span class="pill '+sol+'">'+esc(d.solution_type||'—')+'</span></span></div>');
+  if(d.niche) rows.push('<div class="row"><span class="k">Niche</span><span class="v">'+esc(d.niche)+'</span></div>');
+  if(d.last_modified) rows.push('<div class="row"><span class="k">Listing updated</span><span class="v">'+esc(d.last_modified)+'</span></div>');
 
   sheet.innerHTML =
     '<div class="sheet-head">'+
@@ -495,7 +472,7 @@ function openSheet(d){
       '<span class="cat-label">'+esc(d.category)+'</span>'+
       '<h2 id="sheetTitle">'+esc(d.name)+'</h2>'+
       (d.blurb?'<p class="blurb">'+esc(d.blurb)+'</p>':'')+
-      '<div class="sheet-tags"><span class="pill '+d.status+'">'+STATUS_LABEL[d.status]+'</span></div>'+
+      '<div class="sheet-tags"><span class="pill '+sol+'">'+esc(d.solution_type||'—')+'</span></div>'+
     '</div>'+
     '<div class="sheet-body">'+
       '<div class="sect"><p class="lbl">Ranking</p>'+
@@ -506,7 +483,7 @@ function openSheet(d){
         (d.fee_source?'<p class="fee-src">verified via '+esc(d.fee_source)+'</p>':'')+'</div>'+
       '<div class="sect"><p class="lbl">Why merchants pick it</p>'+
         '<ul class="benefits">'+(d.benefits||[]).map(b=>'<li>'+CHECK+'<span>'+esc(b)+'</span></li>').join('')+'</ul></div>'+
-      '<div class="sect"><p class="lbl">Processing compatibility</p><div class="kv">'+rows.join('')+'</div></div>'+
+      '<div class="sect"><p class="lbl">Directory details</p><div class="kv">'+rows.join('')+'</div></div>'+
       (d.website?'<div class="sect"><a class="visit" href="'+esc(d.website)+'" target="_blank" rel="noopener noreferrer">Visit website '+EXT+'</a></div>':'')+
     '</div>';
   overlay.classList.add('open');
@@ -529,8 +506,7 @@ document.addEventListener('keydown', e=>{
 
 /* ---------- wire controls ---------- */
 $('q').addEventListener('input', e=>{ state.q = e.target.value; render(); });
-$('status').addEventListener('change', e=>{ state.status = e.target.value; render(); });
-$('platform').addEventListener('change', e=>{ state.platform = e.target.value; render(); });
+$('soltype').addEventListener('change', e=>{ state.sol = e.target.value; render(); });
 $('sort').addEventListener('change', e=>{ state.sort = e.target.value; render(); });
 $('legendBtn').addEventListener('click', ()=>{
   const l = $('legend'); const open = l.classList.toggle('open');
