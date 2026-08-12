@@ -578,7 +578,7 @@
   "emv": false,
   "gift": false,
   "conversion_costs": "$0.20 per transaction",
-  "site_note": "Compatible via CardKnox gateway. Send Var sheet to Owner and they sent it to Aluvii support. There is a $0.20 per transaction fee from Aluvii/Cardknox"
+  "site_note": "Compatible via CardKnox gateway. Send Var sheet to Owner and they sent it to Aluvii support."
  },
  {
   "category": "Attractions, Amusement & Family Entertainment",
@@ -1168,7 +1168,7 @@
   "last_modified": "February 25, 2021",
   "blurb": "Cloud booking platform for tours, activities, and rental operators, now part of the Rezdy group.",
   "rank": 7,
-  "fee": "$99/mo + 3% online booking fee",
+  "fee": "$99/mo",
   "fee_note": "single plan; no fee on offline bookings",
   "fee_source": "checkfront.com",
   "benefits": [
@@ -1395,7 +1395,7 @@
   "blurb": "Hamilton Manufacturing builds unattended payment kiosks and changers for car washes and laundromats.",
   "rank": 5,
   "fee": "Hardware purchase",
-  "fee_note": "Equipment sold outright; processing fees separate.",
+  "fee_note": "Equipment sold outright.",
   "benefits": [
    "Decades-long reputation in unattended payments",
    "Rugged kiosks built for outdoor use",
@@ -1420,7 +1420,7 @@
   "blurb": "Global cashless payment and telemetry platform for vending machines and unattended retail.",
   "rank": 8,
   "fee": "Custom quote",
-  "fee_note": "Per-device monthly SaaS fee plus processing rates.",
+  "fee_note": "Per-device monthly SaaS fee.",
   "benefits": [
    "Global leader in unattended cashless payments",
    "Telemetry and remote machine management included",
@@ -1581,7 +1581,7 @@
   "blurb": "Global online marketplace where merchants sell new and used goods via listings and auctions.",
   "rank": 9,
   "fee": "Stores $4.95\u2013$349.95/mo",
-  "fee_note": "Starter\u2013Anchor, annual billing (Enterprise $2,995/mo); plus final value fees ~13.6% most categories",
+  "fee_note": "Starter\u2013Anchor, annual billing (Enterprise $2,995/mo)",
   "fee_source": "ebay.com",
   "benefits": [
    "Massive built-in global buyer audience",
@@ -1603,7 +1603,7 @@
   "blurb": "Embeddable online store platform by Lightspeed that adds e-commerce to any existing website.",
   "rank": 7,
   "fee": "Free; paid $5\u2013$119/mo",
-  "fee_note": "Venture $29, Business $49, Unlimited $119 after Mar 2026 increase; ~16% off annual",
+  "fee_note": "Venture $29, Business $49, Unlimited $119 after Mar 2026 increase",
   "fee_source": "ecwid.com",
   "benefits": [
    "Embeds into any website or social page",
@@ -1625,7 +1625,6 @@
   "blurb": "Meta's social commerce tools letting businesses list and sell products across Facebook and Instagram.",
   "rank": 7,
   "fee": "Free listings; selling fees",
-  "fee_note": "Checkout sales incur Meta selling or processing fees.",
   "benefits": [
    "Direct access to Facebook and Instagram audiences",
    "Free product listings and shop setup",
@@ -1646,7 +1645,6 @@
   "blurb": "Hosted shopping cart and checkout service that adds e-commerce to any website or platform.",
   "rank": 5,
   "fee": "From $25/mo",
-  "fee_note": "Plus a small per-transaction fee.",
   "benefits": [
    "Works with any website or CMS",
    "Developer-friendly, highly customizable checkout",
@@ -1660,7 +1658,7 @@
   "emv": false,
   "gift": false,
   "hardware": "THIS IS A SHOPPING CART",
-  "site_note": "Compatible with Authorize.Net, Cayan, Braintree, Cybersource, PayTrace and USA ePay.\r\nPricing starts at $20/mo or $180/yr. This includes the first 100 transactions each month. Anything over that will get a .5% transaction fee with a minimum of 1 cent and a maximum of 15 cents. This does not include any fees charged by the payment gateway*check our Conversion list for each gateway PRICING*"
+  "site_note": "Compatible with Authorize.Net, Cayan, Braintree, Cybersource, PayTrace and USA ePay. Pricing starts at $20/mo or $180/yr. This includes the first 100 transactions each month. This does not include any fees charged by the payment gateway*check our Conversion list for each gateway PRICING*"
  },
  {
   "category": "E-commerce & Online Storefronts",
@@ -1932,8 +1930,7 @@
   "confidence": "high",
   "emv": false,
   "gift": false,
-  "conversion_costs": "Auth.net Charges $12 per month with a $.05/per transaction and per batch",
-  "site_note": "Compatible via Authorize.Net there will be additional SHOPIFY transaction fees of 2%, 1% or 0.5% for their Basic Shopify, Shopify and Advanced Shopify plans, respectively."
+  "conversion_costs": "Auth.net Charges $12 per month with a $.05/per transaction and per batch"
  },
  {
   "category": "E-commerce & Online Storefronts",
@@ -3724,7 +3721,7 @@
   "blurb": "All-in-one POS, CRM, and e-commerce platform for small businesses and field sales.",
   "rank": 4,
   "fee": "Custom quote",
-  "fee_note": "Monthly subscription plus processing rates",
+  "fee_note": "Monthly subscription",
   "benefits": [
    "Combined POS, CRM, and online sales",
    "US-based live customer support",
@@ -5145,7 +5142,7 @@
   "last_modified": "August 6, 2020",
   "blurb": "Leading cloud-based EHR, revenue cycle, and patient engagement platform for medical practices.",
   "rank": 9,
-  "fee": "~4\u20138% of collections",
+  "fee": "Custom quote",
   "fee_note": "Percentage-of-collections model; custom quote, not published",
   "fee_source": "athenahealth.com",
   "benefits": [
@@ -5924,7 +5921,6 @@
   "blurb": "Invoicing and payment platform with recurring billing that syncs with QuickBooks.",
   "rank": 4,
   "fee": "From ~$25/mo",
-  "fee_note": "Plus payment processing fees",
   "benefits": [
    "Tight QuickBooks synchronization",
    "Automated recurring invoices and reminders",
@@ -5947,7 +5943,7 @@
   "blurb": "Leading subscription billing and revenue management platform for SaaS and subscription businesses.",
   "rank": 9,
   "fee": "Free; Performance $599/mo",
-  "fee_note": "free to $250K lifetime billing; 0.75% overage; annual commitment; Enterprise custom",
+  "fee_note": "free to $250K lifetime billing; annual commitment; Enterprise custom",
   "fee_source": "swell.is",
   "benefits": [
    "Category leader in subscription billing",
@@ -6447,7 +6443,7 @@
   "emv": false,
   "gift": false,
   "conversion_costs": "Authroize.net ($12/month) Bankful ($50+/month)",
-  "site_note": "Compatible but requires 2 gateway services. (1) Authorize.net & (2) Bankful. Bankful rates are 10 cents per transaction + .6% of Volume, the minimum is $50 per month."
+  "site_note": "Compatible but requires 2 gateway services. (1) Authorize.net & (2) Bankful."
  },
  {
   "category": "Marketing, CRM & Web Platforms",
@@ -6815,7 +6811,7 @@
   "blurb": "Leading WordPress plugin for building membership sites with paywalled content, courses, and subscriptions.",
   "rank": 8,
   "fee": "$179.50\u2013$399.50/yr (1st yr)",
-  "fee_note": "Annual only; renews ~$399\u2013$999/yr. Launch plan has 4.9% txn fee",
+  "fee_note": "Annual only",
   "fee_source": "memberpress.com",
   "benefits": [
    "Most popular WordPress membership plugin",
@@ -6953,7 +6949,7 @@
   "last_modified": "May 8, 2024",
   "blurb": "Leading buy-now-pay-later provider letting shoppers split purchases into installment payments at checkout.",
   "rank": 9,
-  "fee": "Free; custom per-txn merchant fee",
+  "fee": "Free",
   "fee_note": "No monthly/annual fees; base % + fixed per transaction, rate set at onboarding",
   "fee_source": "affirm.com",
   "benefits": [
@@ -6999,8 +6995,8 @@
   "last_modified": "May 31, 2023",
   "blurb": "Visa-owned payment gateway powering online and card-not-present payments for hundreds of thousands of merchants.",
   "rank": 9,
-  "fee": "$25/mo + 2.9% + 30\u00a2",
-  "fee_note": "All-in-One plan; gateway-only $25/mo + 10\u00a2/txn + 10\u00a2 daily batch",
+  "fee": "$25/mo",
+  "fee_note": "All-in-One plan",
   "fee_source": "authorize.net",
   "benefits": [
    "One of the most widely integrated gateways",
@@ -7027,7 +7023,7 @@
   "last_modified": "February 1, 2024",
   "blurb": "Worldline-owned payment gateway offering online, in-app, and recurring payment processing in North America.",
   "rank": 7,
-  "fee": "2.9% + 30\u00a2/txn (std)",
+  "fee": "Custom quote",
   "fee_note": "Worldline NA, now joined Shift4; custom rates at volume",
   "fee_source": "bambora.com",
   "benefits": [
@@ -7192,7 +7188,7 @@
   "blurb": "Payments platform that syncs invoices and transactions automatically with QuickBooks and other accounting software.",
   "rank": 6,
   "fee": "Custom quote",
-  "fee_note": "Tiered SaaS plans plus processing rates",
+  "fee_note": "Tiered SaaS plans",
   "benefits": [
    "Two-way sync with major accounting platforms",
    "Automated invoicing and payment reconciliation",
@@ -7286,8 +7282,7 @@
   "last_modified": "February 7, 2021",
   "blurb": "Major global merchant acquirer and gateway owned by U.S. Bank, serving businesses of all sizes.",
   "rank": 8,
-  "fee": "From 2.6% + 10\u00a2 per swipe",
-  "fee_note": "2.9% + 30\u00a2 online; rates negotiated for larger merchants",
+  "fee": "Custom quote",
   "fee_source": "elavon.com",
   "benefits": [
    "Top-tier global acquirer with bank backing",
@@ -7406,7 +7401,7 @@
   "blurb": "Enterprise commerce platform delivering PCI-validated P2PE payments for large hospitality, retail, and stadium operators.",
   "rank": 8,
   "fee": "Custom quote",
-  "fee_note": "Enterprise payments gateway; no published rates \u2014 gateway/processing fees quoted per merchant",
+  "fee_note": "Enterprise payments gateway; quoted per merchant",
   "fee_source": "freedompay.com",
   "benefits": [
    "Leader in enterprise P2PE-validated payments",
@@ -7692,7 +7687,7 @@
   "last_modified": "November 7, 2022",
   "blurb": "PayPal's Payflow gateway linking merchant accounts to online checkout with hosted or API-based payment pages.",
   "rank": 7,
-  "fee": "$0\u2013$25/mo + $0.10/txn",
+  "fee": "$0\u2013$25/mo",
   "fee_note": "Payflow Link free tier; Pro adds monthly fee",
   "benefits": [
    "Backed by PayPal's scale and reliability",
@@ -7762,14 +7757,14 @@
   "solution_type": "Point of Sale",
   "niche": "B2B payment gateway",
   "last_modified": "January 18, 2022",
-  "blurb": "B2B-focused payment gateway known for automatic Level II/III data optimization that lowers interchange costs.",
+  "blurb": "B2B-focused payment gateway known for automatic Level II/III data optimization.",
   "rank": 7,
   "fee": "Custom quote",
   "fee_note": "Monthly gateway fee via reseller partners; part of North",
   "benefits": [
-   "Level II/III optimization cuts B2B interchange",
    "Popular among wholesale and manufacturing merchants",
-   "Easy virtual terminal and API options"
+   "Easy virtual terminal and API options",
+   "Established option in its niche"
   ],
   "website": "https://paytrace.net/product-matrix/",
   "confidence": "high",
@@ -7974,10 +7969,9 @@
   "solution_type": "Point of Sale",
   "niche": "Subscription-based payment processing",
   "last_modified": "June 6, 2022",
-  "blurb": "Subscription-based merchant services platform charging flat monthly fees over direct-cost interchange.",
+  "blurb": "Subscription-based merchant services platform charging flat monthly software fees.",
   "rank": 7,
   "fee": "From $99/mo",
-  "fee_note": "interchange passed through at cost, no markup",
   "benefits": [
    "Transparent subscription pricing model",
    "Savings for higher-volume merchants",
@@ -8019,7 +8013,7 @@
   "blurb": "Veteran payment gateway supporting e-commerce, retail, and mobile acceptance with developer APIs.",
   "rank": 6,
   "fee": "Custom quote",
-  "fee_note": "sold via resellers; monthly plus per-transaction fees",
+  "fee_note": "sold via resellers",
   "benefits": [
    "Long-established, widely integrated gateway",
    "Strong developer APIs and SDKs",
@@ -8067,11 +8061,10 @@
   "blurb": "WEX's B2B payment platform, formerly 3Delta Systems, specializing in Level 3 purchasing-card processing.",
   "rank": 5,
   "fee": "Custom quote",
-  "fee_note": "optimized Level 2/3 interchange for B2B cards",
   "benefits": [
-   "Level 3 data lowers B2B interchange",
    "Backed by WEX's payments scale",
-   "Secure tokenized card storage"
+   "Secure tokenized card storage",
+   "Established option in its niche"
   ],
   "website": "https://www.wexinc.com/t1",
   "confidence": "medium",
@@ -9302,7 +9295,7 @@
   "last_modified": "December 1, 2019",
   "blurb": "Technology-powered real-estate brokerage and listings platform offering discounted listing fees and online tools.",
   "rank": 7,
-  "fee": "1\u20131.5% listing fee",
+  "fee": "Custom quote",
   "fee_note": "consumer brokerage fees, not SaaS pricing",
   "benefits": [
    "Major consumer real-estate brand",
@@ -9745,7 +9738,7 @@
   "blurb": "NCR Voyix's market-leading point-of-sale platform for full-service and quick-service restaurants.",
   "rank": 9,
   "fee": "~$99\u2013$175/terminal/mo (Cloud)",
-  "fee_note": "Aloha Essentials quote-only; NCR Voyix processing required on Cloud (~2.6% + 10\u00a2)",
+  "fee_note": "Aloha Essentials quote-only; NCR Voyix processing required on Cloud",
   "fee_source": "posusa.com",
   "benefits": [
    "Dominant install base in restaurants",
@@ -11924,7 +11917,7 @@
   "blurb": "Lightspeed's flagship retail POS with advanced inventory, analytics, and e-commerce for specialty retailers.",
   "rank": 8,
   "fee": "$89\u2013$289/mo per location",
-  "fee_note": "Annual billing; $109\u2013$339 monthly. Lightspeed Payments 2.6% + 10c",
+  "fee_note": "Annual billing",
   "fee_source": "tech.co",
   "benefits": [
    "Category-leading specialty retail inventory",
@@ -12470,7 +12463,7 @@
   "confidence": "low",
   "emv": false,
   "gift": false,
-  "site_note": "Compatible Through Cayan. This works with Genius mini, countertop, and handheld.  (Mini for android only)\r\n\r\n Fees are as follows:\r\n\r\n$34.95/per genius countertop-month, $14.95/gateway-month, and $0.05/transaction"
+  "site_note": "Compatible Through Cayan. This works with Genius mini, countertop, and handheld."
  },
  {
   "category": "Retail - General POS",
@@ -12481,7 +12474,7 @@
   "blurb": "Shopify's integrated point-of-sale app unifying in-store and online retail sales.",
   "rank": 9,
   "fee": "From $29/mo; POS Pro $89/mo",
-  "fee_note": "POS Pro billed per location; card processing rates apply",
+  "fee_note": "POS Pro billed per location",
   "benefits": [
    "Seamless unification of online and in-store selling",
    "Huge app ecosystem and constant product investment",
@@ -12491,8 +12484,7 @@
   "confidence": "high",
   "emv": false,
   "gift": false,
-  "conversion_costs": "Auth.net Charges $12 per month with a $.05/per transaction and per batch",
-  "site_note": "Compatible via Authorize.Net there will be additional SHOPIFY transaction fees of 2%, 1% or 0.5% for their Basic Shopify, Shopify and Advanced Shopify plans, respectively."
+  "conversion_costs": "Auth.net Charges $12 per month with a $.05/per transaction and per batch"
  },
  {
   "category": "Retail - General POS",
@@ -12735,7 +12727,6 @@
   "blurb": "Merchant services provider supplying payment-integrated POS solutions for card and gift retailers.",
   "rank": 3,
   "fee": "Custom quote",
-  "fee_note": "merchant processing rates negotiated per account",
   "benefits": [
    "Payments bundled with POS setup",
    "Personalized merchant-level support",
@@ -12896,8 +12887,8 @@
   "last_modified": "April 12, 2023",
   "blurb": "Largest online marketplace for firearms, ammunition, and hunting gear auctions.",
   "rank": 7,
-  "fee": "6% first $400 + 4% above",
-  "fee_note": "Seller final value fee (drops to 3%/2% above $15k/$20k); basic listings free",
+  "fee": "Custom quote",
+  "fee_note": "Seller final value fee; basic listings free",
   "fee_source": "gunbroker.com",
   "benefits": [
    "Dominant audience in online firearms sales",
@@ -13545,7 +13536,7 @@
   "blurb": "Large web-based ticketing provider serving venues, fairs, theaters, and festivals across North America.",
   "rank": 7,
   "fee": "Custom quote",
-  "fee_note": "Per-ticket service fees (~10\u201315%), negotiated per venue",
+  "fee_note": "Per-ticket service fees, negotiated per venue",
   "fee_source": "ticketspice.com",
   "benefits": [
    "Handles high-volume on-sales reliably",
@@ -13587,8 +13578,8 @@
   "last_modified": "September 29, 2019",
   "blurb": "The leading self-service event ticketing and registration marketplace for events of all sizes.",
   "rank": 9,
-  "fee": "Free events $0; 3.7% + $1.79/tkt",
-  "fee_note": "Plus 2.9% payment processing per order; fees passable to attendees",
+  "fee": "Free events $0",
+  "fee_note": "fees passable to attendees",
   "fee_source": "eventbrite.com",
   "benefits": [
    "Massive consumer marketplace drives event discovery",
@@ -13649,7 +13640,7 @@
   "company": "Gather here",
   "emv": false,
   "gift": false,
-  "site_note": "Compatible using Authorize.net or TSYS. Gather fee $5 per $1,000 processed on top of the merchant processing rate."
+  "site_note": "Compatible using Authorize.net or TSYS."
  },
  {
   "category": "Ticketing, Events & Venues",
@@ -13896,7 +13887,7 @@
   "last_modified": "March 9, 2020",
   "blurb": "Simple self-service ticketing platform for independent event organizers, part of Leap Event Technology.",
   "rank": 5,
-  "fee": "~$1 + 2% per ticket",
+  "fee": "From ~$1/ticket",
   "fee_note": "Fees can pass to ticket buyers",
   "benefits": [
    "Fast, easy DIY event setup",
@@ -13958,7 +13949,7 @@
   },
   "emv": false,
   "gift": false,
-  "site_note": "Compatible with Authorize.net. a 1% additional fee on the transaction."
+  "site_note": "Compatible with Authorize.net."
  },
  {
   "category": "Ticketing, Events & Venues",
@@ -13993,7 +13984,7 @@
   "last_modified": "August 25, 2020",
   "blurb": "European event ticketing and registration platform with multi-currency sales and awards management.",
   "rank": 4,
-  "fee": "~2.5% per ticket",
+  "fee": "Custom quote",
   "fee_note": "Commission on paid tickets only",
   "benefits": [
    "Sell in many currencies and languages",
@@ -14385,7 +14376,7 @@
   "blurb": "Vacation rental software for building direct booking websites with channel management and payments.",
   "rank": 7,
   "fee": "$16\u2013$59/property/mo",
-  "fee_note": "Yearly billing; Starter adds 1.9% booking fee",
+  "fee_note": "Yearly billing",
   "fee_source": "lodgify.com",
   "benefits": [
    "Best-known for direct booking websites",
