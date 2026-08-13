@@ -316,6 +316,8 @@
   }
   .merchant-field::placeholder{color:var(--faint)}
   .merchant-field:focus-visible{box-shadow:0 0 0 3.5px color-mix(in srgb, var(--blue) 28%, transparent)}
+  .ae-row{display:flex; gap:10px}
+  .ae-row .merchant-field{flex:1; min-width:0}
   .visit{
     display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
     background:var(--blue); color:#fff; border:0; border-radius:980px;
@@ -427,6 +429,9 @@ const $ = id => document.getElementById(id);
 const grid = $('grid'), sheet = $('sheet'), overlay = $('overlay');
 let lastFocus = null;
 let merchantName = '';
+let ae = {name:'', phone:'', email:''};
+try{ ae = Object.assign(ae, JSON.parse(localStorage.getItem('wpi_ae')||'{}')); }catch(e){}
+function saveAE(){ try{ localStorage.setItem('wpi_ae', JSON.stringify(ae)); }catch(e){} }
 
 /* ---------- category pills ---------- */
 (function(){
@@ -572,9 +577,15 @@ function openSheet(d){
       '<div class="group-box"><p class="lbl">Directory details</p><div class="contact-rows">'+rows.join('')+'</div></div>'+
     '</div>'+
     '<div class="sheet-cta"><input class="merchant-field" id="merchantInput" type="text" maxlength="60" placeholder="Merchant name (prints on the flyer)" value="'+esc(merchantName)+'" aria-label="Merchant name to print on the flyer">'+
+    '<input class="merchant-field" id="aeName" type="text" maxlength="50" placeholder="Account executive name" value="'+esc(ae.name)+'" aria-label="Account executive name">'+
+    '<div class="ae-row"><input class="merchant-field" id="aePhone" type="tel" maxlength="25" placeholder="AE phone" value="'+esc(ae.phone)+'" aria-label="Account executive phone">'+
+    '<input class="merchant-field" id="aeEmail" type="email" maxlength="60" placeholder="AE email" value="'+esc(ae.email)+'" aria-label="Account executive email"></div>'+
     '<button class="visit alt" id="flyerBtn" type="button">Text or email this flyer '+SHARE_ICO+'</button>'+
     (d.website?'<a class="visit" href="'+esc(d.website)+'" target="_blank" rel="noopener noreferrer">Visit '+esc(d.name)+' '+EXT+'</a>':'')+'</div>';
   $('merchantInput').addEventListener('input', (e)=>{ merchantName = e.target.value; });
+  $('aeName').addEventListener('input', (e)=>{ ae.name = e.target.value; saveAE(); });
+  $('aePhone').addEventListener('input', (e)=>{ ae.phone = e.target.value; saveAE(); });
+  $('aeEmail').addEventListener('input', (e)=>{ ae.email = e.target.value; saveAE(); });
   $('flyerBtn').addEventListener('click', ()=>shareFlyer(d));
   overlay.classList.add('open');
   sheet.classList.add('open');
@@ -732,6 +743,14 @@ function buildFlyerPDF(d){
   o+=`${M+40} 64 m ${M+240} 64 l S\n`;
   o+=txt('F2',10,PDF_INK,M+266,66,'Email:');
   o+=`${M+304} 64 m ${W-M} 64 l S\n`;
+  const aeN=(ae.name||'').trim(), aeP=(ae.phone||'').trim(), aeE=(ae.email||'').trim();
+  if(aeN) o+=txt('F1',11,PDF_NAVY,M+100,93.5,aeN);
+  if(aeP) o+=txt('F1',11,PDF_NAVY,M+48,67.5,aeP);
+  if(aeE){
+    let eSize=11;
+    while(estW(aeE,eSize,false)>W-M-(M+312) && eSize>8) eSize-=0.5;
+    o+=txt('F1',eSize,PDF_NAVY,M+312,67.5,aeE);
+  }
 
   // assemble objects
   const objs=[];
