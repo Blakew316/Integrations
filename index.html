@@ -231,6 +231,17 @@
   .foot-right{display:flex; align-items:center; gap:7px}
   .has-contact{display:inline-flex; color:var(--slate)}
   .has-contact svg{width:13px; height:13px}
+  .share-btn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:26px; height:26px; border-radius:8px; color:var(--slate); cursor:pointer;
+    transition:background .12s ease, color .12s ease;
+  }
+  .share-btn:hover{background:var(--group); color:var(--ink)}
+  .share-btn:focus-visible{outline:2px solid var(--blue); outline-offset:1px}
+  .share-btn svg{width:14px; height:14px}
+  .visit.alt{background:var(--ink); margin-bottom:10px}
+  :root[data-theme="dark"] .visit.alt{color:#000}
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]) .visit.alt{color:#000} }
   .pill{
     flex:none; font-size:10.5px; font-weight:600; letter-spacing:.02em;
     border-radius:999px; padding:4.5px 10px;
@@ -454,6 +465,7 @@ function filtered(){
 /* ---------- render ---------- */
 function esc(s){ return String(s==null?'':s).replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
 const PHONE_ICO = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2.5 h2.6 l1.2 3 -1.7 1.3 a9.5 9.5 0 0 0 4.1 4.1 l1.3 -1.7 3 1.2 v2.6 a1.4 1.4 0 0 1 -1.5 1.4 A12.6 12.6 0 0 1 1.6 4 1.4 1.4 0 0 1 3 2.5 z"/></svg>';
+const SHARE_ICO = '<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M8 1.8 V10"/><path d="M5.2 4.4 L8 1.6 L10.8 4.4"/><path d="M3.5 7.5 H3 a1.5 1.5 0 0 0 -1.5 1.5 v4 A1.5 1.5 0 0 0 3 14.5 h10 a1.5 1.5 0 0 0 1.5 -1.5 v-4 A1.5 1.5 0 0 0 13 7.5 h-.5"/></svg>';
 
 function render(){
   const items = filtered();
@@ -470,9 +482,12 @@ function render(){
       '<div class="score '+cls+'"><b>'+d.rank+'</b><i>/10</i></div></div>'+
       '<p class="blurb">'+esc(d.blurb||d.niche||'')+'</p>'+
       '<div class="item-foot"><span class="fee">'+esc(d.fee||'—')+'</span>'+
-      '<span class="foot-right">'+(d.contact&&d.contact.phone?'<span class="has-contact" title="Direct line on file">'+PHONE_ICO+'</span>':'')+
+      '<span class="foot-right"><span class="share-btn" role="button" tabindex="0" data-share title="Text or email flyer" aria-label="Text or email flyer for '+esc(d.name)+'">'+SHARE_ICO+'</span>'+(d.contact&&d.contact.phone?'<span class="has-contact" title="Direct line on file">'+PHONE_ICO+'</span>':'')+
       '<span class="pill '+sol+'">'+esc(d.solution_type||'—')+'</span></span></div>';
     el.addEventListener('click',()=>openSheet(d));
+    const sb = el.querySelector('[data-share]');
+    sb.addEventListener('click',(ev)=>{ ev.stopPropagation(); shareFlyer(d); });
+    sb.addEventListener('keydown',(ev)=>{ if(ev.key==='Enter'||ev.key===' '){ ev.preventDefault(); ev.stopPropagation(); shareFlyer(d); } });
     frag.appendChild(el);
   });
   grid.replaceChildren(frag);
@@ -547,7 +562,9 @@ function openSheet(d){
         '<ul class="benefits">'+(d.benefits||[]).map(b=>'<li>'+CHECK+'<span>'+esc(b)+'</span></li>').join('')+'</ul></div>'+
       '<div class="group-box"><p class="lbl">Directory details</p><div class="contact-rows">'+rows.join('')+'</div></div>'+
     '</div>'+
-    (d.website?'<div class="sheet-cta"><a class="visit" href="'+esc(d.website)+'" target="_blank" rel="noopener noreferrer">Visit '+esc(d.name)+' '+EXT+'</a></div>':'');
+    '<div class="sheet-cta"><button class="visit alt" id="flyerBtn" type="button">Text or email this flyer '+SHARE_ICO+'</button>'+
+    (d.website?'<a class="visit" href="'+esc(d.website)+'" target="_blank" rel="noopener noreferrer">Visit '+esc(d.name)+' '+EXT+'</a>':'')+'</div>';
+  $('flyerBtn').addEventListener('click', ()=>shareFlyer(d));
   overlay.classList.add('open');
   sheet.classList.add('open');
   document.body.style.overflow='hidden';
@@ -565,6 +582,179 @@ document.addEventListener('keydown', e=>{
   if(e.key==='Escape' && sheet.classList.contains('open')) closeSheet();
   if(e.key==='/' && document.activeElement !== $('q')){ e.preventDefault(); $('q').focus(); }
 });
+
+
+/* ---------- flyer PDF generator (dependency-free) ---------- */
+const PDF_NAVY='0.051 0.106 0.298', PDF_BLUE='0.035 0.482 0.910', PDF_GREEN='0.184 0.714 0.373',
+      PDF_LGREEN='0.659 0.855 0.573', PDF_GREY='0.42 0.43 0.46', PDF_INK='0.114 0.114 0.122',
+      PDF_LINE='0.90 0.905 0.92', PDF_WHITE='1 1 1', PDF_PALE='0.961 0.973 0.988';
+
+function pdfText(s){
+  const MAP={'\u2019':'\\222','\u2018':'\\221','\u201C':'\\223','\u201D':'\\224','\u2013':'\\226','\u2014':'\\227','\u2022':'\\225','\u00A2':'\\242','\u00E9':'\\351','\u00AE':'\\256','\u2122':'\\231'};
+  let out='';
+  for(const ch of String(s)){
+    if(ch==='\\') out+='\\\\';
+    else if(ch==='(') out+='\\(';
+    else if(ch===')') out+='\\)';
+    else if(MAP[ch]!==undefined) out+=MAP[ch];
+    else if(ch.charCodeAt(0)<=126) out+=ch;
+  }
+  return out;
+}
+function estW(s,size,bold){
+  let w=0;
+  for(const ch of String(s)){
+    let f=0.545;
+    if('iljt.,:;\'!|f'.includes(ch)) f=0.30;
+    else if('mwMW'.includes(ch)) f=0.90;
+    else if(ch===' ') f=0.278;
+    else if(ch>='A'&&ch<='Z') f=0.70;
+    w+=f*size;
+  }
+  return bold? w*1.06 : w;
+}
+function pdfWrap(s,size,maxW,bold){
+  const words=String(s).split(/\s+/), lines=[]; let cur='';
+  for(const w of words){
+    const test=cur?cur+' '+w:w;
+    if(estW(test,size,bold)>maxW && cur){ lines.push(cur); cur=w; }
+    else cur=test;
+  }
+  if(cur) lines.push(cur);
+  return lines;
+}
+function rr(x,y,w,h,r){
+  const k=0.5523*r;
+  return `${x+r} ${y} m ${x+w-r} ${y} l ${x+w-r+k} ${y} ${x+w} ${y+r-k} ${x+w} ${y+r} c `+
+         `${x+w} ${y+h-r} l ${x+w} ${y+h-r+k} ${x+w-r+k} ${y+h} ${x+w-r} ${y+h} c `+
+         `${x+r} ${y+h} l ${x+r-k} ${y+h} ${x} ${y+h-r+k} ${x} ${y+h-r} c `+
+         `${x} ${y+r} l ${x} ${y+r-k} ${x+r-k} ${y} ${x+r} ${y} c h `;
+}
+function txt(font,size,color,x,y,s,charSpace){
+  return `BT /${font} ${size} Tf ${color} rg ${charSpace?charSpace+' Tc ':'0 Tc '}${x} ${y} Td (${pdfText(s)}) Tj ET\n`;
+}
+function logoOps(x,y,h){
+  const s=h/76;
+  let o='';
+  o+=PDF_BLUE.replace('0.035 0.482 0.910','0.106 0.518 0.910')+' rg '+rr(x+2*s,y+(76-44)*s,8*s,34*s,4*s)+'f\n';
+  o+='0.184 0.714 0.373 rg '+rr(x+14*s,y+8*s,20*s,64*s,6*s)+'f\n';
+  o+='0.106 0.518 0.910 rg '+rr(x+14*s,y+(76-19)*s-6*s,20*s,19*s+6*s,6*s)+'f\n';
+  o+='0.184 0.714 0.373 rg '+`${x+14*s} ${y+30*s} ${20*s} ${28*s} re f\n`;
+  o+='0.502 0.804 0.525 rg '+rr(x+14*s,y+8*s,20*s,12*s+6*s,6*s)+'f\n';
+  o+='0.184 0.714 0.373 rg '+`${x+14*s} ${y+20*s} ${20*s} ${12*s} re f\n`;
+  o+='0.239 0.745 0.424 rg '+rr(x+38*s,y+16*s,7*s,42*s,3.5*s)+'f\n';
+  return o;
+}
+function buildFlyerPDF(d){
+  const W=612,H=792,M=46,CW=W-2*M;
+  let o='';
+  o+='1 1 1 rg 0 0 612 792 re f\n';
+  // header
+  o+=logoOps(M,H-88,44);
+  o+=txt('F2',20,PDF_NAVY,M+38,H-70,'wholesale');
+  o+=txt('F1',20,PDF_GREY,M+38+estW('wholesale',20,true)+6,H-70,'payments');
+  o+=txt('F2',8.5,PDF_GREY,W-M-estW('COMPATIBLE INTEGRATION',8.5,true)-14,H-66,'COMPATIBLE INTEGRATION',1.4);
+  o+=PDF_LINE+' RG 1 w '+`${M} ${H-104} m ${W-M} ${H-104} l S\n`;
+  // brand name + rank
+  let nameSize=30;
+  while(estW(d.name,nameSize,true)>CW-150 && nameSize>16) nameSize-=2;
+  o+=txt('F2',nameSize,PDF_NAVY,M,H-146,d.name);
+  o+=txt('F1',11,PDF_GREY,M,H-165,d.category+(d.solution_type?'  \u2022  '+d.solution_type:''));
+  const rankStr=String(d.rank);
+  o+=txt('F2',34,PDF_NAVY,W-M-118,H-152,rankStr);
+  o+=txt('F1',13,PDF_GREY,W-M-118+estW(rankStr,34,true)+3,H-152,'/10  rank');
+  for(let i=0;i<10;i++){
+    o+=(i<d.rank?PDF_GREEN:PDF_LINE)+' rg '+rr(W-M-120+i*12.2,H-170,9.6,5,2.2)+'f\n';
+  }
+  // blurb
+  let y=H-200;
+  for(const ln of pdfWrap(d.blurb||d.niche||'',12,CW,false).slice(0,3)){
+    o+=txt('F1',12,PDF_INK,M,y,ln); y-=17;
+  }
+  // benefits
+  y-=16;
+  o+=txt('F2',10,PDF_GREY,M,y,'WHY MERCHANTS PICK IT',1.3); y-=24;
+  for(const b of (d.benefits||[]).slice(0,3)){
+    o+=PDF_GREEN+' RG 1.6 w '+`${M+4} ${y+3} m ${M+8} ${y-1} l ${M+15} ${y+8} l S\n`;
+    o+=txt('F1',13,PDF_INK,M+26,y,b);
+    y-=25;
+  }
+  // dual pricing panel
+  const pTop=y-14, pBot=150, pH=pTop-pBot;
+  o+=PDF_NAVY+' rg '+rr(M,pBot,CW,pH,16)+'f\n';
+  let py=pTop-42;
+  o+=txt('F2',26,PDF_LGREEN,M+28,py,'NO MORE'); py-=27;
+  o+=txt('F2',20,PDF_WHITE,M+28,py,'Credit Card Processing Fees'); py-=30;
+  const bullets=['0% Credit Card Processing Cost','$0 Transaction Fee','Free State-of-the-Art Equipment','No Hidden Fees','$45 Flat Fee Per Month'];
+  for(const b of bullets){
+    o+=PDF_LGREEN+' rg '+rr(M+30,py+2.5,5,5,2.5)+'f\n';
+    o+=txt('F2',12.5,PDF_WHITE,M+44,py,b);
+    py-=21;
+  }
+  // guarantee card (right side of panel)
+  const gX=M+CW*0.52, gW=CW*0.44, gH=130, gY=pTop-74-gH;
+  o+=PDF_WHITE+' rg '+rr(gX,gY,gW,gH,12)+'f\n';
+  let gy=gY+gH-26;
+  o+=txt('F2',15,PDF_NAVY,gX+16,gy,'$500 GUARANTEE'); gy-=18;
+  for(const ln of pdfWrap("If we can't beat your current rates, we will give your business a $500 check for taking a few minutes to allow us to do a comparison.",9.5,gW-32,false)){
+    o+=txt('F1',9.5,PDF_GREY,gX+16,gy,ln); gy-=13;
+  }
+  // dual pricing explainer under bullets
+  let ey=py-4;
+  o+=txt('F2',11,PDF_LGREEN,M+28,ey,'DUAL PRICING'); ey-=15;
+  for(const ln of pdfWrap('Empower your customers to choose: pay the cash price, or cover the card price. You keep 100% of every sale.',9.5,CW*0.48,false)){
+    o+=txt('F1',9.5,PDF_WHITE,M+28,ey,ln); ey-=13;
+  }
+  // account manager lines
+  o+=PDF_INK+' rg\n';
+  o+=txt('F2',10,PDF_INK,M,92,'Account Manager:');
+  o+='0.6 0.62 0.66 RG 0.8 w '+`${M+92} 90 m ${W-M} 90 l S\n`;
+  o+=txt('F2',10,PDF_INK,M,66,'Phone:');
+  o+=`${M+40} 64 m ${M+240} 64 l S\n`;
+  o+=txt('F2',10,PDF_INK,M+266,66,'Email:');
+  o+=`${M+304} 64 m ${W-M} 64 l S\n`;
+  o+=txt('F1',9,PDF_GREY,(W-estW('wholesale payments  \u2022  wpiintegrations.com',9,false))/2,38,'wholesale payments  \u2022  wpiintegrations.com');
+
+  // assemble objects
+  const objs=[];
+  objs.push('<< /Type /Catalog /Pages 2 0 R >>');
+  objs.push('<< /Type /Pages /Kids [3 0 R] /Count 1 >>');
+  objs.push('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>');
+  objs.push('<< /Length '+o.length+' >>\nstream\n'+o+'endstream');
+  objs.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
+  objs.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+  let pdf='%PDF-1.4\n%\u00E2\u00E3\u00CF\u00D3\n';
+  const offsets=[];
+  objs.forEach((body,i)=>{ offsets.push(pdf.length); pdf+=(i+1)+' 0 obj\n'+body+'\nendobj\n'; });
+  const xref=pdf.length;
+  pdf+='xref\n0 '+(objs.length+1)+'\n0000000000 65535 f \n';
+  offsets.forEach(off=>{ pdf+=String(off).padStart(10,'0')+' 00000 n \n'; });
+  pdf+='trailer\n<< /Size '+(objs.length+1)+' /Root 1 0 R >>\nstartxref\n'+xref+'\n%%EOF';
+  const bytes=new Uint8Array(pdf.length);
+  for(let i=0;i<pdf.length;i++) bytes[i]=pdf.charCodeAt(i)&0xFF;
+  return bytes;
+}
+window.buildFlyerPDF = buildFlyerPDF;
+
+async function shareFlyer(d){
+  try{
+    const bytes=buildFlyerPDF(d);
+    const fname=d.name.replace(/[^\w\- ]+/g,'').trim().replace(/\s+/g,'-')+'-wholesale-payments.pdf';
+    const file=new File([bytes],fname,{type:'application/pdf'});
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      await navigator.share({files:[file], title:d.name+' \u2014 Wholesale Payments', text:'Integration flyer for '+d.name});
+      return;
+    }
+    const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
+    const a=document.createElement('a');
+    a.href=url; a.download=fname;
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),4000);
+  }catch(err){
+    if(err && err.name==='AbortError') return;
+    console.error('Flyer share failed:', err);
+  }
+}
 
 /* ---------- wire controls ---------- */
 $('q').addEventListener('input', e=>{ state.q = e.target.value; render(); });
