@@ -649,6 +649,7 @@ function buildFlyerPDF(d){
   const W=612,H=792,M=46,CW=W-2*M;
   let o='';
   o+='1 1 1 rg 0 0 612 792 re f\n';
+  o+='q 0 784 612 8 re W n /ShBrand sh Q\n';
   // header
   o+=logoOps(M,H-88,44);
   o+=txt('F2',20,PDF_NAVY,M+38,H-70,'wholesale');
@@ -679,21 +680,22 @@ function buildFlyerPDF(d){
     o+=txt('F1',13,PDF_INK,M+26,y,b);
     y-=25;
   }
-  // dual pricing panel
+  // dual pricing panel — light reflective brand gradient
   const pTop=y-14, pBot=150, pH=pTop-pBot;
-  o+=PDF_NAVY+' rg '+rr(M,pBot,CW,pH,16)+'f\n';
+  o+='q '+rr(M,pBot,CW,pH,16)+'W n /ShPanel sh Q\n';
   let py=pTop-42;
-  o+=txt('F2',26,PDF_LGREEN,M+28,py,'NO MORE'); py-=27;
-  o+=txt('F2',20,PDF_WHITE,M+28,py,'Credit Card Processing Fees'); py-=30;
+  o+=txt('F2',26,PDF_GREEN,M+28,py,'NO MORE'); py-=27;
+  o+=txt('F2',20,PDF_NAVY,M+28,py,'Credit Card Processing Fees'); py-=30;
   const bullets=['0% Credit Card Processing Cost','$0 Transaction Fee','Free State-of-the-Art Equipment','No Hidden Fees','$45 Flat Fee Per Month'];
   for(const b of bullets){
-    o+=PDF_LGREEN+' rg '+rr(M+30,py+2.5,5,5,2.5)+'f\n';
-    o+=txt('F2',12.5,PDF_WHITE,M+44,py,b);
+    o+=PDF_GREEN+' rg '+rr(M+30,py+2.5,5,5,2.5)+'f\n';
+    o+=txt('F2',12.5,PDF_NAVY,M+44,py,b);
     py-=21;
   }
   // guarantee card (right side of panel)
   const gX=M+CW*0.52, gW=CW*0.44, gH=130, gY=pTop-74-gH;
   o+=PDF_WHITE+' rg '+rr(gX,gY,gW,gH,12)+'f\n';
+  o+='0.729 0.847 0.945 RG 0.9 w '+rr(gX,gY,gW,gH,12)+'S\n';
   let gy=gY+gH-26;
   o+=txt('F2',15,PDF_NAVY,gX+16,gy,'$500 GUARANTEE'); gy-=18;
   for(const ln of pdfWrap("If we can't beat your current rates, we will give your business a $500 check for taking a few minutes to allow us to do a comparison.",9.5,gW-32,false)){
@@ -701,9 +703,9 @@ function buildFlyerPDF(d){
   }
   // dual pricing explainer under bullets
   let ey=py-4;
-  o+=txt('F2',11,PDF_LGREEN,M+28,ey,'DUAL PRICING'); ey-=15;
+  o+=txt('F2',11,'0.106 0.518 0.910',M+28,ey,'DUAL PRICING'); ey-=15;
   for(const ln of pdfWrap('Empower your customers to choose: pay the cash price, or cover the card price. You keep 100% of every sale.',9.5,CW*0.48,false)){
-    o+=txt('F1',9.5,PDF_WHITE,M+28,ey,ln); ey-=13;
+    o+=txt('F1',9.5,PDF_GREY,M+28,ey,ln); ey-=13;
   }
   // account manager lines
   o+=PDF_INK+' rg\n';
@@ -713,16 +715,17 @@ function buildFlyerPDF(d){
   o+=`${M+40} 64 m ${M+240} 64 l S\n`;
   o+=txt('F2',10,PDF_INK,M+266,66,'Email:');
   o+=`${M+304} 64 m ${W-M} 64 l S\n`;
-  o+=txt('F1',9,PDF_GREY,(W-estW('wholesale payments  \u2022  wpiintegrations.com',9,false))/2,38,'wholesale payments  \u2022  wpiintegrations.com');
 
   // assemble objects
   const objs=[];
   objs.push('<< /Type /Catalog /Pages 2 0 R >>');
   objs.push('<< /Type /Pages /Kids [3 0 R] /Count 1 >>');
-  objs.push('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> >> /Contents 4 0 R >>');
+  objs.push('<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 5 0 R /F2 6 0 R >> /Shading << /ShBrand 7 0 R /ShPanel 8 0 R >> >> /Contents 4 0 R >>');
   objs.push('<< /Length '+o.length+' >>\nstream\n'+o+'endstream');
   objs.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>');
   objs.push('<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>');
+  objs.push('<< /ShadingType 2 /ColorSpace /DeviceRGB /Coords [0 788 612 788] /Function << /FunctionType 2 /Domain [0 1] /C0 [0.106 0.518 0.910] /C1 [0.239 0.745 0.424] /N 1 >> /Extend [true true] >>');
+  objs.push('<< /ShadingType 2 /ColorSpace /DeviceRGB /Coords [46 490 566 150] /Function << /FunctionType 2 /Domain [0 1] /C0 [0.902 0.941 0.988] /C1 [0.910 0.965 0.925] /N 1 >> /Extend [true true] >>');
   let pdf='%PDF-1.4\n%\u00E2\u00E3\u00CF\u00D3\n';
   const offsets=[];
   objs.forEach((body,i)=>{ offsets.push(pdf.length); pdf+=(i+1)+' 0 obj\n'+body+'\nendobj\n'; });
