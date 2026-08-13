@@ -736,6 +736,20 @@ function buildFlyerPDF(d){
 }
 window.buildFlyerPDF = buildFlyerPDF;
 
+let toastTimer=null;
+function showToast(msg){
+  let el=document.getElementById('toast');
+  if(!el){
+    el=document.createElement('div'); el.id='toast';
+    el.style.cssText='position:fixed;left:50%;bottom:28px;transform:translateX(-50%);z-index:80;background:var(--ink);color:var(--page);padding:11px 18px;border-radius:12px;font-size:13px;max-width:88vw;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25);opacity:0;transition:opacity .25s ease';
+    document.body.appendChild(el);
+  }
+  el.textContent=msg;
+  requestAnimationFrame(()=>{ el.style.opacity='1'; });
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>{ el.style.opacity='0'; },5000);
+}
+
 async function shareFlyer(d){
   try{
     const bytes=buildFlyerPDF(d);
@@ -743,6 +757,10 @@ async function shareFlyer(d){
     const file=new File([bytes],fname,{type:'application/pdf'});
     if(navigator.canShare && navigator.canShare({files:[file]})){
       await navigator.share({files:[file], title:d.name+' \u2014 Wholesale Payments', text:'Integration flyer for '+d.name});
+      return;
+    }
+    if(window.claude){
+      showToast('Flyer sharing works on the live site \u2014 open wpiintegrations.com to text, email, or download it.');
       return;
     }
     const url=URL.createObjectURL(new Blob([bytes],{type:'application/pdf'}));
