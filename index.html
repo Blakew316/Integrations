@@ -308,6 +308,14 @@
   .benefits li{display:flex; gap:11px; font-size:14px; line-height:1.45; align-items:flex-start; letter-spacing:-.005em}
   .benefits svg{flex:none; width:17px; height:17px; margin-top:1px}
   .sheet-cta{padding:12px 22px 30px}
+  .merchant-field{
+    display:block; width:100%; height:44px; margin-bottom:10px; padding:0 16px;
+    border:0; border-radius:12px; background:var(--group); color:var(--ink);
+    font:inherit; font-size:14px; letter-spacing:-.005em; outline:none;
+    transition:box-shadow .15s ease;
+  }
+  .merchant-field::placeholder{color:var(--faint)}
+  .merchant-field:focus-visible{box-shadow:0 0 0 3.5px color-mix(in srgb, var(--blue) 28%, transparent)}
   .visit{
     display:flex; align-items:center; justify-content:center; gap:8px; width:100%;
     background:var(--blue); color:#fff; border:0; border-radius:980px;
@@ -418,6 +426,7 @@ const state = { q:'', cat:null, sol:'', sort:'rank' };
 const $ = id => document.getElementById(id);
 const grid = $('grid'), sheet = $('sheet'), overlay = $('overlay');
 let lastFocus = null;
+let merchantName = '';
 
 /* ---------- category pills ---------- */
 (function(){
@@ -562,8 +571,10 @@ function openSheet(d){
         '<ul class="benefits">'+(d.benefits||[]).map(b=>'<li>'+CHECK+'<span>'+esc(b)+'</span></li>').join('')+'</ul></div>'+
       '<div class="group-box"><p class="lbl">Directory details</p><div class="contact-rows">'+rows.join('')+'</div></div>'+
     '</div>'+
-    '<div class="sheet-cta"><button class="visit alt" id="flyerBtn" type="button">Text or email this flyer '+SHARE_ICO+'</button>'+
+    '<div class="sheet-cta"><input class="merchant-field" id="merchantInput" type="text" maxlength="60" placeholder="Merchant name (prints on the flyer)" value="'+esc(merchantName)+'" aria-label="Merchant name to print on the flyer">'+
+    '<button class="visit alt" id="flyerBtn" type="button">Text or email this flyer '+SHARE_ICO+'</button>'+
     (d.website?'<a class="visit" href="'+esc(d.website)+'" target="_blank" rel="noopener noreferrer">Visit '+esc(d.name)+' '+EXT+'</a>':'')+'</div>';
+  $('merchantInput').addEventListener('input', (e)=>{ merchantName = e.target.value; });
   $('flyerBtn').addEventListener('click', ()=>shareFlyer(d));
   overlay.classList.add('open');
   sheet.classList.add('open');
@@ -654,7 +665,13 @@ function buildFlyerPDF(d){
   o+=logoOps(M,H-88,44);
   o+=txt('F2',20,PDF_NAVY,M+38,H-70,'wholesale');
   o+=txt('F1',20,PDF_GREY,M+38+estW('wholesale',20,true)+6,H-70,'payments');
-  o+=txt('F2',8.5,PDF_GREY,W-M-estW('COMPATIBLE INTEGRATION',8.5,true)-14,H-66,'COMPATIBLE INTEGRATION',1.4);
+  const merch=(merchantName||'').trim();
+  if(merch){
+    o+=txt('F2',7,PDF_GREY,W-M-estW('PREPARED FOR',7,true)-8,H-58,'PREPARED FOR',1.3);
+    let mSize=13;
+    while(estW(merch,mSize,true)>236 && mSize>9) mSize-=1;
+    o+=txt('F2',mSize,PDF_NAVY,W-M-estW(merch,mSize,true),H-74,merch);
+  }
   o+=PDF_LINE+' RG 1 w '+`${M} ${H-104} m ${W-M} ${H-104} l S\n`;
   // brand name + rank
   let nameSize=30;
